@@ -1,90 +1,78 @@
 <?php
 
-class Funcionario {
-    public $nome;
-    public $cpf;
-    public $salarioBase;
+class veiculo  {
+    public $marca;
+    public $modelo;
+    public $ano;
+    public $cor;
 
-    public function __construct($nome, $cpf, $salarioBase){
-        $this->nome = $nome;
-        $this->cpf = $cpf;
-        $this->salarioBase = $salarioBase;
+    public function __construct($marca, $modelo, $ano, $cor){
+        $this->marca = $marca;
+        $this->modelo = $modelo;
+        $this->ano = $ano;
+        $this->cor = $cor;
     }
 
-    public function calcularSalario(){
-        return $this->salarioBase;
-    }
-
-    public function exibirDados(){
-        return "Nome: {$this->nome}, CPF: {$this->cpf}";
+    public function exibirInformacoes(){
+        return "Marca: {$this->marca}, Modelo: {$this->modelo}, Ano: {$this->ano}, Cor: {$this->cor}";
     }
 }
 
+class carro extends veiculo {
 
-class Gerente extends Funcionario {
-    private $percentualDeBonus;
+    private $quantidadeDePortas;
 
-    public function __construct($nome, $cpf, $salarioBase, $percentualDeBonus){
-        $this->percentualDeBonus =  $percentualDeBonus;
-        parent::__construct($nome, $cpf, $salarioBase);
+    public function __construct($marca, $modelo, $ano, $cor, $quantidadeDePortas){
+        $this->quantidadeDePortas = $quantidadeDePortas;
+        parent::__construct($marca, $modelo, $ano, $cor);
     }
 
-    public function calcularSalario(){
-        return $this->salarioBase + ($this->salarioBase * $this->percentualDeBonus / 100);
-    }
-
-    public function exibirDados(){
-        return parent::exibirDados() . ", Tipo: Gerente, Salário: " . $this->calcularSalario();
+    public function getQuantidadeDePortas(){
+        return $this->quantidadeDePortas;
     }
 }
 
+class moto extends veiculo {
 
-class Estagiario extends Funcionario {
-    private $horasEstagio;
-    private $valorHora;
+    private $cilindradas;
 
-    public function __construct($nome, $cpf, $salarioBase, $horasEstagio, $valorHora){
-        $this->horasEstagio = $horasEstagio;
-        $this->valorHora = $valorHora;
-        parent::__construct($nome, $cpf, $salarioBase);
+    public function __construct($marca, $modelo, $ano, $cor, $cilindradas){
+        $this->cilindradas = $cilindradas;
+        parent::__construct($marca, $modelo, $ano, $cor);
     }
 
-    public function calcularSalario(){
-        return $this->horasEstagio * $this->valorHora;
-    }
-
-    public function exibirDados(){
-        return parent::exibirDados() . ", Tipo: Estagiário, Salário: " . $this->calcularSalario();
+    public function getCilindradas(){
+        return $this->cilindradas;
     }
 }
 
+class caminhao extends veiculo {
 
-class FuncionarioComum extends Funcionario {
+    private $capacidadeDeCarga;
 
-    public function __construct($nome, $cpf, $salarioBase){
-        parent::__construct($nome, $cpf, $salarioBase);
+    public function __construct($marca, $modelo, $ano, $cor, $capacidadeDeCarga){
+        $this->capacidadeDeCarga = $capacidadeDeCarga;
+        parent::__construct($marca, $modelo, $ano, $cor);
     }
 
-    public function calcularSalario(){
-        return $this->salarioBase;
-    }
-
-    public function exibirDados(){
-        return parent::exibirDados() . ", Tipo: Funcionário Comum, Salário: " . $this->calcularSalario();
+    public function getCapacidadeDeCarga(){
+        return $this->capacidadeDeCarga;
     }
 }
 
-
-$g1 = new Gerente('Thiago', '000.000.000-00', 10000, 20);
-echo $g1->exibirDados();
+$t1 = new carro('Honda', 'Civic', '2021', 'preta', 4);
+echo $t1->exibirInformacoes();
+echo ", Quantidade de portas: " . $t1->getQuantidadeDePortas();
 echo "<br>";
 
-$e1 = new Estagiario('Mateus', '111.111.111-11', 2000, 2, 50);
-echo "<br>" . $e1->exibirDados();
+$t2 = new moto('Yamaha', 'Ninja 300', '2022', 'preta', '400cc.');
+echo "<br>" . $t2->exibirInformacoes();
+echo ", Cilindradas: " . $t2->getCilindradas();
 echo "<br>";
 
-$f1 = new FuncionarioComum('Martins', '222.222.222-22', 5000);
-echo "<br>" . $f1->exibirDados();
+$t3 = new caminhao('Mercedes-Benz', 'Atego 1719', '2020', 'branca', '10 toneladas.',);
+echo "<br>" . $t3->exibirInformacoes();
+echo ", Capacidade de carga: " . $t3->getCapacidadeDeCarga();
 
 ?>
 
