@@ -80,10 +80,10 @@ echo $g1->exibirDados();
 echo "<br>";
 
 $e1 = new Estagiario('Mateus', '111.111.111-11', 2000, 2, 50);
-echo $e1->exibirDados();
+echo "<br>" . $e1->exibirDados();
 echo "<br>";
 
 $f1 = new FuncionarioComum('Martins', '222.222.222-22', 5000);
-echo $f1->exibirDados();
+echo "<br>" . $f1->exibirDados();
 
 ?>
