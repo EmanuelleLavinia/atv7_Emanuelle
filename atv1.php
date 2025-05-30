@@ -62,15 +62,18 @@ class caminhao extends veiculo {
 
 $t1 = new carro('Honda', 'Civic', '2021', 'preta', 4);
 echo $t1->exibirInformacoes();
+echo ", Quantidade de portas: " . $t1->getQuantidadeDePortas();
+echo "<br>";
 
-echo "<br>Quantidade de portas: " . $t1->getQuantidadeDePortas();
-
-$t2 = new moto('Yamaha', 'Ninja 300', '2022', 'preta', '400cc');
+$t2 = new moto('Yamaha', 'Ninja 300', '2022', 'preta', '400cc.');
 echo "<br>" . $t2->exibirInformacoes();
-echo "<br>Cilindradas: " . $t2->getCilindradas();
+echo ", Cilindradas: " . $t2->getCilindradas();
+echo "<br>";
 
-$t3 = new caminhao('Mercedes-Benz', 'Atego 1719', '2020', 'branca', '10 toneladas');
+$t3 = new caminhao('Mercedes-Benz', 'Atego 1719', '2020', 'branca', '10 toneladas.',);
 echo "<br>" . $t3->exibirInformacoes();
-echo "<br>Capacidade de carga: " . $t3->getCapacidadeDeCarga();
+echo ", Capacidade de carga: " . $t3->getCapacidadeDeCarga();
 
 ?>
+
+
